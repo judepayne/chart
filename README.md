@@ -1,11 +1,19 @@
 <<<<<<< HEAD
 # chart
 
-A Clojure library designed to ... well, that part is up to you.
+Real-time charts for Clojure
 
 ## Usage
 
-FIXME
+e.g.
+Define some functions that take no args:
+
+    (defn rand1 [] (rand 1))
+
+(maybe your functions will deref an atom or similar)
+
+then:
+    (show (time-chart [rand1 rand1]) :title "test random funcs")
 
 ## License
 
@@ -16,6 +24,3 @@ your option) any later version.
 =======
 chart
 =====
-
-real-time chart for clojure
->>>>>>> f778aa9a874daf4fc700c2b01f0948248392b6c7

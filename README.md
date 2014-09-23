@@ -6,7 +6,7 @@ Real-time charts for Clojure
 
 add the following to the dependencies in your project.clj file
 
-    [chart "0.1.0-SNAPSHOT"]
+    [chart "0.1.0"]
 
 In a src file, require chart like this:
 

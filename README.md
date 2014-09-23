@@ -10,7 +10,7 @@ add the following to the dependencies in your project.clj file
 
 In a src file, require chart like this:
 
-    ..(:require [chart/core :as c])..
+    ..(:require [chart.core :as c])..
 
 e.g.
 Define some functions that take no args:

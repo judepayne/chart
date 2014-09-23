@@ -5,6 +5,14 @@ Real-time charts for Clojure
 
 ## Usage
 
+add the following to the dependencies in your project.clj file
+
+    [chart "0.1.0-SNAPSHOT"]
+
+In a src file, require chart like this:
+
+    ..(:require [chart/core :as c])..
+
 e.g.
 Define some functions that take no args:
 
@@ -13,6 +21,7 @@ Define some functions that take no args:
 (maybe your functions will deref an atom or similar)
 
 then:
+
     (show (time-chart [rand1 rand1]) :title "test random funcs")
 
 ## License

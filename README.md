@@ -12,8 +12,8 @@ In a src file, require chart like this:
 
     ..(:require [chart.core :as c])..
 
+Define some functions that take no args:  
 e.g.
-Define some functions that take no args:
 
     (defn rand1 [] (rand 1))
 

@@ -6,11 +6,11 @@ Real-time charts for Clojure
 
 add the following to the dependencies in your project.clj file
 
-    [chart "0.1.0"]
+    [live-chart "0.1.1"]
 
 In a src file, require chart like this:
 
-    ..(:require [chart.core :as c])..
+    ..(:require [live-chart :as c])..
 
 Define some functions that take no args:  
 e.g.

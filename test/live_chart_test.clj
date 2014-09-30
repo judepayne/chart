@@ -1,4 +1,4 @@
-(ns chart.core-test
+(ns live-chart-test
   (:require [clojure.test :refer :all]
             [chart.core :refer :all]))
 

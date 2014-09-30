@@ -1,4 +1,4 @@
-(ns chart.core
+(ns live-chart
   (:use clojure.core.matrix)
   (:import [javax.swing JComponent JLabel JPanel JFrame])
   (:import [java.awt Graphics2D Color GridLayout])
@@ -26,7 +26,7 @@
     (.pack)
     (.setDefaultCloseOperation (. JFrame DISPOSE_ON_CLOSE))))
 
-(defn- label 
+(defn- label
   "Creates a JLabel with the given content"
   (^JLabel [s]
     (let [^String s (str s)
@@ -34,10 +34,10 @@
       (.setToolTipText label s)
       label)))
 
-(defn- component 
-  "Creates a component as appropriate to visualise an object x" 
+(defn- component
+  "Creates a component as appropriate to visualise an object x"
   (^JComponent [x]
-    (cond 
+    (cond
       (instance? JComponent x) x
       ;(instance? BufferedImage x) (JIcon. ^BufferedImage x)
       (instance? JFreeChart x) (ChartPanel. ^JFreeChart x)
@@ -61,9 +61,9 @@
         (.pack f))
     f))
 
-(defn show 
+(defn show
      "Shows a component in a new frame"
-     ([com 
+     ([com
        & {:keys [^String title]
           :as options
           :or {title nil}}]
@@ -77,14 +77,14 @@
 
 (defn xy-chart-multiline ^JFreeChart [xs yss]
   (let [chart (xy-chart xs (first yss))]
-    (doseq [ys (rest yss)] 
-      (incanter.charts/add-lines chart xs ys)) 
+    (doseq [ys (rest yss)]
+      (incanter.charts/add-lines chart xs ys))
     chart))
 
-(defn time-chart 
+(defn time-chart
   "Creates a continously updating time chart of one or more calculations, which should be functions with zero arguments."
   [calcs
-     & {:keys [repaint-speed time-periods y-min y-max] 
+     & {:keys [repaint-speed time-periods y-min y-max]
         :or {repaint-speed 250
              time-periods 1200}}]
   (let [line-count (count calcs)
@@ -99,13 +99,13 @@
                         (let [chart (xy-chart-multiline @times @values)]
                           (if y-max (incanter.charts/set-y-range chart (double (or y-min 0.0)) (double y-max)))
                           chart)))
-        panel (ChartPanel. ^JFreeChart (next-chart)) 
-        timer (javax.swing.Timer. 
-               (int repaint-speed) 
+        panel (ChartPanel. ^JFreeChart (next-chart))
+        timer (javax.swing.Timer.
+               (int repaint-speed)
                (proxy [java.awt.event.ActionListener] []
-                 (actionPerformed 
+                 (actionPerformed
                    [^ActionEvent e]
-                   (when (.isShowing panel) 
+                   (when (.isShowing panel)
                      (.setChart panel ^JFreeChart (next-chart))
                      (.repaint ^JComponent panel)) )))]
     (.start timer)
